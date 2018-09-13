@@ -15,7 +15,7 @@ from const import *
 
 class Madis:
 
-    def __init__(self, long_ext, lat_ext, start_time, iterator):
+    def __init__(self, start_time, iterator, hours, long_ext=(-85.0, -80.6), lat_ext=(38.3, 42.4)):
 
         self.west = long_ext[0]
         self.east = long_ext[1]
@@ -23,6 +23,7 @@ class Madis:
         self.north = lat_ext[1]
         self.start = start_time
         self.iter = iterator
+        self.hours = hours
 
     @staticmethod
     def diagnostics(*items):
@@ -200,7 +201,7 @@ class Madis:
         print('starting download for next day')
 
         # loop through hours
-        for k in range(24):
+        for k in range(self.hours):
             dates = next(self.iter)
             http = ARCHIVE_URL + dates[0] + '/' + dates[1] + '/' + dates[2] + URL_MADIS + dates[0] + dates[1] + dates[2] + \
                 dates[3] + '.gz'
