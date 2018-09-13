@@ -1,18 +1,3 @@
-# -------------------------------------------------------------------------------
-# Name:        date_iterator.py
-# Purpose:     An iterator class for use with madis_beta.py. Yields date outputs
-#              which match with the MADIS file name format and https server structure.
-#
-# Author:      Derek Smetzer
-# Created:     8/19/2018
-# Version:     v.1.0
-# Changelog:
-#
-# To Do:
-#
-# -------------------------------------------------------------------------------
-
-
 class DateConstructor:
 
     def __init__(self, year, month, day, hour):
@@ -88,11 +73,4 @@ class DateConstructor:
                 for j in range(self.day_start, self.day_end + 1):
                     for k in range(self.hour, 24):
                         yield self.year_format(), self.element_format(i), self.element_format(j), self.hour_format(k)
-
-# for k in range(6):
-#     print('next')
-#     for i in range(24):
-#         dates = next(b)
-#         print(dates[0], dates[1], dates[2], dates[3])
-
 
