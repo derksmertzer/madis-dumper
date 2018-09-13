@@ -19,13 +19,15 @@ def main():
         os.makedirs(CLEAN)
 
     # instantiate iterator
-    date_pack = DateConstructor(2015, (9, 9), (27, 30), 0)
-    dates = iter(date_pack)
+    date_gen = DateConstructor()
+    hour_range = date_gen.hour_range()
+    month_range = date_gen.hour_range()
+    dates = iter(date_gen)
 
     print('begin file download for year 2015\n')
-    for i in range(13):
+    for i in range(date_gen.month_range()):
         # start this ugly shit code and chug a beer
-        Madis(long_ext=(-85.0, -80.6), lat_ext=(38.3, 42.4), start_time=start, iterator=dates).get_files()
+        Madis(start_time=start, iterator=dates, hours=hour_range).get_files()
 
     print('finished download in: {}'.format(time() - start))
 
